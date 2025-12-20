@@ -14,7 +14,7 @@ const App: React.FC = () => {
   const startExperience = () => {
     setStarted(true);
     if (audioRef.current) {
-      audioRef.current.play().catch(e => console.log("Audio play failed (user interaction required):", e));
+      audioRef.current.play().catch(e => console.log("Audio play failed (waiting for music.mp3 in assets/):", e));
       audioRef.current.volume = 0.5;
     }
     
@@ -51,8 +51,8 @@ const App: React.FC = () => {
       {started && (
         <button 
           onClick={toggleMusic}
-          className="absolute top-4 right-4 z-50 p-2 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur border border-white/30 transition-all text-xl"
-          title={isMuted ? "Play Music" : "Pause Music"}
+          className="absolute top-4 right-4 z-50 p-2 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur border border-white/30 transition-all text-xl pointer-events-auto"
+          title={isMuted ? "Phát nhạc" : "Tạm dừng"}
         >
           {isMuted ? "🔇" : "🔊"}
         </button>
@@ -61,15 +61,15 @@ const App: React.FC = () => {
       <div className="flex-1 relative flex flex-col items-center justify-center z-10 pointer-events-none">
         
         {/* Header Text */}
-        <div className={`w-full transition-all duration-1000 transform ${started ? 'translate-y-[-220px] scale-75' : 'translate-y-[-80px]'}`}>
-          <h1 className="text-4xl md:text-6xl text-yellow-400 font-bold tracking-wider drop-shadow-[0_0_10px_rgba(255,215,0,0.8)] text-center mb-4">
+        <div className={`w-full transition-all duration-1000 transform ${started ? 'translate-y-[-180px] md:translate-y-[-220px] scale-75' : 'translate-y-[-60px]'}`}>
+          <h1 className="text-3xl md:text-6xl text-yellow-400 font-bold tracking-wider drop-shadow-[0_0_10px_rgba(255,215,0,0.8)] text-center mb-4">
             MERRY CHRISTMAS
           </h1>
           {started && (
-             <div className="w-full h-16 relative overflow-hidden pointer-events-none">
+             <div className="w-full h-12 md:h-16 relative overflow-hidden pointer-events-none">
                 <div 
                   key={currentGreeting}
-                  className="absolute top-0 whitespace-nowrap text-3xl md:text-4xl text-green-300 font-bold drop-shadow-[0_0_5px_rgba(0,255,0,0.8)]"
+                  className="absolute top-0 whitespace-nowrap text-2xl md:text-4xl text-green-300 font-bold drop-shadow-[0_0_5px_rgba(0,255,0,0.8)]"
                   style={{ 
                     animation: 'run 10s linear forwards',
                     willChange: 'transform'
@@ -85,10 +85,10 @@ const App: React.FC = () => {
         {/* Start Button / Star Interaction */}
         {!started && (
           <div className="flex flex-col items-center animate-[float_3s_ease-in-out_infinite] pointer-events-auto cursor-pointer" onClick={startExperience}>
-             <div className="text-yellow-300 text-8xl drop-shadow-[0_0_25px_rgba(255,215,0,1)] transition-transform hover:scale-110 active:scale-95">
+             <div className="text-yellow-300 text-7xl md:text-8xl drop-shadow-[0_0_25px_rgba(255,215,0,1)] transition-transform hover:scale-110 active:scale-95">
                ★
              </div>
-             <p className="mt-4 text-gray-300 text-xl font-mono border border-gray-600 px-4 py-2 rounded bg-black/40 backdrop-blur-sm">
+             <p className="mt-4 text-gray-300 text-lg md:text-xl font-mono border border-gray-600 px-4 py-2 rounded bg-black/40 backdrop-blur-sm">
                ⚠️ Chạm vào ngôi sao ⚠️
              </p>
           </div>
@@ -101,11 +101,11 @@ const App: React.FC = () => {
 
       </div>
 
-      {/* Floating Buttons/Controls (Reopening card) - Resized to be smaller */}
+      {/* Floating Buttons/Controls (Reopening card) */}
       {started && !showCard && (
         <button 
           onClick={() => setShowCard(true)}
-          className="absolute bottom-44 right-6 md:right-10 pointer-events-auto bg-white/20 hover:bg-white/30 backdrop-blur-md text-white border border-red-400/60 rounded-full w-12 h-12 flex items-center justify-center transition-all z-20 animate-bounce shadow-[0_0_15px_rgba(255,100,100,0.4)] group"
+          className="absolute bottom-32 right-6 md:right-10 pointer-events-auto bg-white/20 hover:bg-white/30 backdrop-blur-md text-white border border-red-400/60 rounded-full w-12 h-12 flex items-center justify-center transition-all z-20 animate-bounce shadow-[0_0_15px_rgba(255,100,100,0.4)] group"
           title="Mở thiệp chúc mừng"
         >
           <span className="text-xl group-hover:scale-110 transition-transform duration-300 drop-shadow-md">💌</span>
@@ -120,16 +120,16 @@ const App: React.FC = () => {
         </div>
       )}
       
-      {/* Footer / Copyright & Donation - Adjusted for better visibility */}
-      <div className="w-full pb-8 pt-4 text-center z-30 flex flex-col items-center gap-2 bg-gradient-to-t from-black/60 to-transparent">
-         <p className="text-gray-400 text-sm font-mono opacity-90 pointer-events-none">
+      {/* Footer / Copyright & Donation */}
+      <div className="w-full pb-6 pt-2 text-center z-30 flex flex-col items-center gap-2 bg-gradient-to-t from-black/80 to-transparent">
+         <p className="text-gray-400 text-xs md:text-sm font-mono opacity-90 pointer-events-none">
             Powered By <span className="text-red-400 font-bold">Nhutcoder</span>
          </p>
          <a 
             href="https://www.facebook.com/share/1CQSP8hUo3/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="pointer-events-auto text-sm text-yellow-500 hover:text-yellow-300 underline underline-offset-4 transition-colors font-mono font-bold bg-black/20 px-3 py-1 rounded-full border border-yellow-500/30 shadow-sm"
+            className="pointer-events-auto text-[10px] md:text-xs text-yellow-500 hover:text-yellow-300 underline underline-offset-4 transition-colors font-mono font-bold bg-black/30 px-3 py-1 rounded-full border border-yellow-500/20 shadow-sm mb-2"
          >
             ☕ Ủng hộ tớ tại đây
          </a>

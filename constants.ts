@@ -7,7 +7,8 @@ export const GREETINGS: Greeting[] = [
   { id: 4, text: "Happy Holidays!" },
 ];
 
-export const AUDIO_URL = "https://actions.google.com/sounds/v1/holidays/deck_the_halls.ogg"; // Public domain placeholder
+// Đường dẫn trỏ đến file nhạc trong thư mục assets
+export const AUDIO_URL = "./assets/music.mp3";
 
 export const COLORS = [
   "#ff0000", // Red
