@@ -24,7 +24,7 @@ const App: React.FC = () => {
 
   const playMusic = () => {
     if (audioRef.current) {
-      audioRef.current.load(); // Buộc trình duyệt tải lại file
+      audioRef.current.load();
       audioRef.current.play()
         .then(() => {
           console.log("Audio playing successfully");
@@ -57,7 +57,6 @@ const App: React.FC = () => {
     }
   };
 
-  // Đồng bộ trạng thái UI với trạng thái thực tế của thẻ audio
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -91,6 +90,7 @@ const App: React.FC = () => {
         src={AUDIO_URL} 
         loop 
         preload="auto" 
+        crossOrigin="anonymous"
         onError={() => setAudioError(true)}
       />
 
@@ -112,8 +112,8 @@ const App: React.FC = () => {
           {audioError && (
             <div className="flex flex-col items-end gap-1 animate-[appear_0.3s_ease-out]">
               <div className="bg-black/80 border border-red-500/40 p-2 rounded-lg text-right shadow-2xl">
-                <p className="text-[11px] text-red-400 font-bold font-mono">⚠️ KHÔNG TÌM THẤY NHẠC</p>
-                <p className="text-[9px] text-gray-400 font-mono italic">Cần file: assets/music.mp3</p>
+                <p className="text-[11px] text-red-400 font-bold font-mono">⚠️ KHÔNG TẢI ĐƯỢC NHẠC</p>
+                <p className="text-[9px] text-gray-400 font-mono italic max-w-[200px] break-all">Kiểm tra kết nối mạng hoặc link nhạc</p>
                 <button 
                   onClick={(e) => { e.stopPropagation(); playMusic(); }}
                   className="mt-2 text-[10px] bg-red-500/20 hover:bg-red-500/40 border border-red-500/50 px-2 py-1 rounded transition-colors text-white font-mono pointer-events-auto"
