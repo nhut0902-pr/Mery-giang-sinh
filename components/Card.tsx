@@ -61,49 +61,50 @@ const Card: React.FC<CardProps> = ({ onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50 p-4 bg-black/50 backdrop-blur-sm animate-[appear_0.5s_ease-out]">
+    <div className="fixed inset-0 flex items-center justify-center z-50 p-4 bg-black/60 backdrop-blur-md animate-[appear_0.5s_ease-out]">
       <div 
-        className="relative bg-[#fff0f5] border-4 border-pink-300 rounded-xl p-6 md:p-8 max-w-md w-full shadow-[0_0_50px_rgba(255,192,203,0.6)] text-center text-[#333] font-['Mallanna',_sans-serif]"
+        className="relative bg-[#fffaff] border-[6px] border-red-400 rounded-3xl p-8 md:p-10 max-w-lg w-full shadow-[0_0_80px_rgba(255,50,50,0.5)] text-center text-[#222] font-['Mallanna',_sans-serif] transform -translate-y-12 transition-transform hover:scale-[1.02]"
         onClick={handleSkip}
       >
         
         <button 
           onClick={(e) => { e.stopPropagation(); onClose(); }}
-          className="absolute top-2 right-2 text-2xl text-gray-500 hover:text-red-500 transition-colors z-10"
+          className="absolute -top-4 -right-4 w-10 h-10 bg-white border-4 border-red-400 rounded-full flex items-center justify-center text-2xl text-red-500 hover:bg-red-500 hover:text-white transition-all z-20 shadow-lg"
         >
           &times;
         </button>
 
-        <div className="mb-4">
-          <span className="text-3xl text-red-500">🎄 Gửi Bạn Yêu 🎄</span>
+        <div className="mb-6">
+          <h2 className="text-4xl md:text-5xl text-red-600 font-bold drop-shadow-sm">🎄 Thư Chúc Mừng 🎄</h2>
+          <div className="w-24 h-1 bg-red-400 mx-auto mt-2 rounded-full"></div>
         </div>
 
         <div 
             ref={containerRef}
-            className="space-y-4 text-lg md:text-xl leading-relaxed font-semibold min-h-[220px] text-left select-none cursor-pointer"
-            title="Click to show all text"
+            className="space-y-6 text-xl md:text-2xl leading-relaxed font-semibold min-h-[250px] text-left select-none cursor-pointer"
+            title="Nhấn để hiện tất cả chữ"
         >
           {displayedLines.map((text, idx) => (
              // Only render lines that have started typing
              (idx <= lineIndex) && (
-                 <p key={idx}>
+                 <p key={idx} className="bg-red-50/50 p-2 rounded-lg">
                    {text}
                    {/* Cursor: Show only on the active line being typed */}
                    {idx === lineIndex && lineIndex < LINES.length && (
-                     <span className={`${showCursor ? 'opacity-100' : 'opacity-0'} inline-block w-[2px] h-[1.2em] bg-pink-500 ml-1 align-bottom`}></span>
+                     <span className={`${showCursor ? 'opacity-100' : 'opacity-0'} inline-block w-[3px] h-[1.2em] bg-red-600 ml-1 align-bottom`}></span>
                    )}
                  </p>
              )
           ))}
         </div>
 
-        <div className={`mt-6 text-pink-500 font-bold text-xl transition-all duration-1000 ${lineIndex >= LINES.length ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          Merry Christmas! ❤️
+        <div className={`mt-8 text-red-600 font-bold text-2xl md:text-3xl transition-all duration-1000 ${lineIndex >= LINES.length ? 'opacity-100 scale-110' : 'opacity-0 scale-90 translate-y-4'}`}>
+          Giáng Sinh Vui Vẻ! ❤️
         </div>
         
         {lineIndex < LINES.length && (
-            <div className="absolute bottom-2 right-4 text-xs text-gray-400 italic animate-pulse">
-                Click to skip...
+            <div className="absolute bottom-4 right-6 text-sm text-gray-400 italic animate-pulse">
+                Chạm để xem hết...
             </div>
         )}
       </div>

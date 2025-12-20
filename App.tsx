@@ -102,14 +102,15 @@ const App: React.FC = () => {
 
       </div>
 
-      {/* Floating Buttons/Controls (Optional - for reopening card) */}
+      {/* Floating Buttons/Controls (Reopening card) - Resized to be smaller */}
       {started && !showCard && (
         <button 
           onClick={() => setShowCard(true)}
-          className="absolute bottom-10 right-10 pointer-events-auto bg-white/10 hover:bg-white/20 backdrop-blur text-white border border-white/30 rounded-full w-12 h-12 flex items-center justify-center transition-all z-20 animate-bounce"
-          title="Open Card"
+          className="absolute bottom-40 right-8 md:right-12 pointer-events-auto bg-white/20 hover:bg-white/30 backdrop-blur-md text-white border border-red-400/60 rounded-full w-14 h-14 flex items-center justify-center transition-all z-20 animate-bounce shadow-[0_0_15px_rgba(255,100,100,0.4)] group"
+          title="Mở thiệp chúc mừng"
         >
-          💌
+          <span className="text-2xl group-hover:scale-110 transition-transform duration-300 drop-shadow-md">💌</span>
+          <div className="absolute -top-0.5 -right-0.5 w-3.5 h-3.5 bg-red-500 rounded-full border border-white animate-pulse"></div>
         </button>
       )}
 
@@ -120,9 +121,19 @@ const App: React.FC = () => {
         </div>
       )}
       
-      {/* Footer / Copyright */}
-      <div className="absolute bottom-4 left-0 w-full text-center text-gray-600 text-sm pointer-events-none">
-         Designed with ❤️ for Christmas
+      {/* Footer / Copyright & Donation */}
+      <div className="absolute bottom-4 left-0 w-full text-center z-30 flex flex-col items-center gap-1">
+         <p className="text-gray-500 text-sm font-mono opacity-80 pointer-events-none">
+            Powered By <span className="text-red-400 font-bold">Nhutcoder</span>
+         </p>
+         <a 
+            href="https://www.facebook.com/share/1CQSP8hUo3/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="pointer-events-auto text-xs text-yellow-500/80 hover:text-yellow-400 underline underline-offset-4 transition-colors font-mono"
+         >
+            ☕ Ủng hộ tớ tại đây
+         </a>
       </div>
     </div>
   );
