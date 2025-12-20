@@ -7,8 +7,8 @@ export const GREETINGS: Greeting[] = [
   { id: 4, text: "Happy Holidays!" },
 ];
 
-// Đường dẫn trỏ đến file nhạc trong thư mục assets
-export const AUDIO_URL = "./assets/music.mp3";
+// Sử dụng đường dẫn từ gốc trang web
+export const AUDIO_URL = "assets/music.mp3";
 
 export const COLORS = [
   "#ff0000", // Red

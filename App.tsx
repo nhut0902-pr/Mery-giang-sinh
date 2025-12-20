@@ -14,9 +14,17 @@ const App: React.FC = () => {
 
   const startExperience = () => {
     setStarted(true);
+    playMusic();
+    
+    // Tự động hiện thiệp sau 10 giây
+    setTimeout(() => {
+      setShowCard(true);
+    }, 10000);
+  };
+
+  const playMusic = () => {
     if (audioRef.current) {
-      // Tải lại audio để đảm bảo source mới nhất được nhận diện sau tương tác người dùng
-      audioRef.current.load();
+      audioRef.current.load(); // Buộc trình duyệt tải lại file
       audioRef.current.play()
         .then(() => {
           console.log("Audio playing successfully");
@@ -29,11 +37,6 @@ const App: React.FC = () => {
         });
       audioRef.current.volume = 0.5;
     }
-    
-    // Tự động hiện thiệp sau 10 giây
-    setTimeout(() => {
-      setShowCard(true);
-    }, 10000);
   };
 
   const handleNextGreeting = useCallback(() => {
@@ -64,8 +67,8 @@ const App: React.FC = () => {
       setAudioError(false);
     };
     const handlePause = () => setIsMuted(true);
-    const handleError = () => {
-      console.error("Audio path error or file not found:", AUDIO_URL);
+    const handleError = (e: any) => {
+      console.error("Audio error event:", e);
       setAudioError(true);
     };
 
@@ -82,30 +85,42 @@ const App: React.FC = () => {
 
   return (
     <div className="relative w-full h-screen bg-[radial-gradient(ellipse_at_center,_#1b2735_0%,_#090a0f_100%)] overflow-hidden text-white flex flex-col">
-      {/* Background Audio - Sử dụng preload auto để trình duyệt chuẩn bị sẵn dữ liệu */}
-      <audio ref={audioRef} src={AUDIO_URL} loop preload="auto" />
+      {/* Background Audio */}
+      <audio 
+        ref={audioRef} 
+        src={AUDIO_URL} 
+        loop 
+        preload="auto" 
+        onError={() => setAudioError(true)}
+      />
 
       {/* Snow Effect */}
       <Snow />
 
-      {/* Music Control Button */}
+      {/* Music Control & Error Messages */}
       {started && (
-        <div className="absolute top-4 right-4 z-50 flex flex-col items-end gap-2">
+        <div className="absolute top-4 right-4 z-50 flex flex-col items-end gap-3">
           <button 
             onClick={toggleMusic}
             className={`p-3 rounded-full backdrop-blur border transition-all text-xl pointer-events-auto shadow-lg ${
-              isMuted ? 'bg-red-500/20 border-red-500/50' : 'bg-white/10 border-white/30 hover:bg-white/20'
+              isMuted ? 'bg-red-500/30 border-red-500/50' : 'bg-white/10 border-white/30 hover:bg-white/20'
             }`}
-            title={isMuted ? "Phát nhạc" : "Tạm dừng"}
           >
             {isMuted ? "🔇" : "🔊"}
           </button>
+          
           {audioError && (
-            <div className="flex flex-col items-end">
-              <span className="text-[10px] text-red-400 bg-black/70 px-2 py-1 rounded border border-red-500/30 animate-pulse font-mono">
-                Lỗi: Không tìm thấy "assets/music.mp3"
-              </span>
-              <span className="text-[9px] text-gray-400 mt-1 italic">Vui lòng kiểm tra lại tên file</span>
+            <div className="flex flex-col items-end gap-1 animate-[appear_0.3s_ease-out]">
+              <div className="bg-black/80 border border-red-500/40 p-2 rounded-lg text-right shadow-2xl">
+                <p className="text-[11px] text-red-400 font-bold font-mono">⚠️ KHÔNG TÌM THẤY NHẠC</p>
+                <p className="text-[9px] text-gray-400 font-mono italic">Cần file: assets/music.mp3</p>
+                <button 
+                  onClick={(e) => { e.stopPropagation(); playMusic(); }}
+                  className="mt-2 text-[10px] bg-red-500/20 hover:bg-red-500/40 border border-red-500/50 px-2 py-1 rounded transition-colors text-white font-mono pointer-events-auto"
+                >
+                  🔄 THỬ LẠI
+                </button>
+              </div>
             </div>
           )}
         </div>
@@ -154,7 +169,7 @@ const App: React.FC = () => {
 
       </div>
 
-      {/* Floating Buttons/Controls (Reopening card) */}
+      {/* Floating Buttons/Controls */}
       {started && !showCard && (
         <button 
           onClick={() => setShowCard(true)}
