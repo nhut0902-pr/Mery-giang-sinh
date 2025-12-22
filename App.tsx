@@ -187,21 +187,43 @@ const App: React.FC = () => {
             <Card onClose={() => setShowCard(false)} />
         </div>
       )}
-      
-      {/* Footer / Copyright & Donation */}
-      <div className="w-full pb-8 pt-4 text-center z-30 flex flex-col items-center gap-2 bg-gradient-to-t from-black/90 to-transparent">
-         <p className="text-gray-400 text-xs md:text-sm font-mono opacity-90 pointer-events-none">
+
+      {/* Footer / Info & Links */}
+      <div className="w-full pb-6 pt-4 text-center z-30 flex flex-col items-center gap-2 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
+         <p className="text-gray-400 text-xs md:text-sm font-mono opacity-90 pointer-events-none mb-1">
             Powered By <span className="text-red-400 font-bold">Nhutcoder</span>
          </p>
-         <a 
-            href="https://www.facebook.com/share/1CQSP8hUo3/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="pointer-events-auto text-[10px] md:text-xs text-yellow-500 hover:text-yellow-300 underline underline-offset-4 transition-colors font-mono font-bold bg-black/40 px-4 py-1.5 rounded-full border border-yellow-500/30 shadow-md mb-2"
-         >
-            ☕ Ủng hộ tớ tại đây
-         </a>
+         
+         <div className="flex flex-wrap justify-center gap-2 md:gap-4 px-4">
+            <a 
+                href="https://www.facebook.com/share/1CQSP8hUo3/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="pointer-events-auto text-[10px] md:text-xs text-yellow-500 hover:text-yellow-300 underline underline-offset-4 transition-colors font-mono font-bold bg-black/40 px-3 py-1.5 rounded-full border border-yellow-500/30 shadow-md"
+            >
+                ☕ Donate cho mình
+            </a>
+
+            <a 
+                href="https://blog-89b4.vercel.app" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="pointer-events-auto text-[10px] md:text-xs text-green-400 hover:text-green-300 underline underline-offset-4 transition-colors font-mono font-bold bg-black/40 px-3 py-1.5 rounded-full border border-green-500/30 shadow-md"
+            >
+                📖 Đọc Blog
+            </a>
+
+            <a 
+                href="https://giaydephuongnho.vercel.app" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="pointer-events-auto text-[10px] md:text-xs text-red-400 hover:text-red-300 underline underline-offset-4 transition-colors font-mono font-bold bg-black/40 px-3 py-1.5 rounded-full border border-red-500/30 shadow-md"
+            >
+                👟 Mua giày dép
+            </a>
+         </div>
       </div>
+      
     </div>
   );
 };
