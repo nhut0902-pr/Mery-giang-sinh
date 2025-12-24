@@ -5,7 +5,7 @@ interface CardProps {
 }
 
 const LINES = [
-  "Chúc bạn một mùa Giáng Sinh thật ấm áp và tràn đầy yêu thương!",
+  "Giáng Sinh lại về rồi. Chúc Kiều Anh luôn thật ấm áp, không chỉ vì thời tiết mà còn vì có những người luôn nghĩ đến Kiều Anh. Mong là trong mùa Noel này, mỗi khi Kiều Anh mỉm cười, sẽ có một chút lý do đến từ mình.",
   "Mong rằng những ngày lễ này sẽ mang đến cho bạn những khoảnh khắc tuyệt vời bên gia đình và người thân.",
   "Cảm ơn bạn vì đã luôn ở bên và chia sẻ những niềm vui trong năm qua. Chúc bạn năm mới an khang, hạnh phúc và thành công!"
 ];
