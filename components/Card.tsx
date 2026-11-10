@@ -73,8 +73,14 @@ const Card: React.FC<CardProps> = ({ onClose }) => {
         </button>
 
         <div className="mb-3">
-          <h2 className="text-2xl md:text-3xl text-red-600 font-bold drop-shadow-sm">🎄 Thư Chúc Mừng 🎄</h2>
-          <div className="w-12 h-1 bg-red-400 mx-auto mt-1 rounded-full"></div>
+          <div
+            className="text-3xl md:text-4xl text-red-600 leading-tight"
+            style={{ fontFamily: "'Great Vibes', cursive" }}
+          >
+            Merry Christmas
+          </div>
+          <h2 className="text-lg md:text-xl text-red-700 font-bold tracking-wide mt-0.5">💌 Thư Chúc Mừng</h2>
+          <div className="w-16 h-[3px] bg-gradient-to-r from-transparent via-amber-400 to-transparent mx-auto mt-2 rounded-full"></div>
         </div>
 
         <div 

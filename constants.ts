@@ -1,10 +1,11 @@
 import { Greeting } from "./types";
 
 export const GREETINGS: Greeting[] = [
-  { id: 1, text: "Chúc mừng Giáng Sinh an lành" },
-  { id: 2, text: "Một mùa Giáng Sinh hạnh phúc" },
-  { id: 3, text: "An yên - Bình an - Yêu thương" },
-  { id: 4, text: "Happy Holidays!" },
+  { id: 1, text: "Merry Christmas, Kiều Anh ❤" },
+  { id: 2, text: "Chúc mừng Giáng Sinh an lành" },
+  { id: 3, text: "Một mùa Giáng Sinh hạnh phúc" },
+  { id: 4, text: "An yên - Bình an - Yêu thương" },
+  { id: 5, text: "Happy Holidays!" },
 ];
 
 // Sử dụng URL trực tuyến thay vì file local
