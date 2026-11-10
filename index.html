@@ -3,18 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Christmas Tree</title>
+    <title>🎄 Merry Christmas — Thiệp Giáng Sinh</title>
+    <meta name="theme-color" content="#090a0f" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Mallanna&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Mallanna&display=swap" rel="stylesheet">
     <style>
       body {
         margin: 0;
         overflow: hidden;
         background-color: #000;
-        font-family: 'VT323', monospace;
+        font-family: 'Mallanna', sans-serif;
+      }
+
+      @keyframes fadeIn {
+        0% { opacity: 0; transform: translateY(14px) scale(.96); }
+        100% { opacity: 1; transform: none; }
+      }
+
+      @keyframes slowPing {
+        0% { transform: scale(.55); opacity: .9; }
+        100% { transform: scale(1.5); opacity: 0; }
       }
       
       /* Custom Scrollbar for the card if needed */
